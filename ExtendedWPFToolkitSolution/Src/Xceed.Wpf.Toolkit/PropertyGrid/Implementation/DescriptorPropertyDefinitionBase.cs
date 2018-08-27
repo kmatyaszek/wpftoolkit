@@ -412,6 +412,19 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
                       : false;
     }
 
+    private static void ExecuteCopyValueCommand(object sender, ExecutedRoutedEventArgs e)
+    {
+        var affectedPropertyItem = sender as PropertyItem ?? e.Parameter as PropertyItem;
+        if (affectedPropertyItem == null) return;
+        Clipboard.SetData(DataFormats.Text, affectedPropertyItem.Value);
+    }
+
+    private static void CanExecuteCopyValueCommand(object sender, CanExecuteRoutedEventArgs e)
+    {
+        var affectedPropertyItem = sender as PropertyItem ?? e.Parameter as PropertyItem;
+        e.CanExecute = affectedPropertyItem != null && affectedPropertyItem.Value != null;
+    }
+
     private string ComputeDisplayName()
     {
 #if VS2008
@@ -687,7 +700,11 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
 
 
       _newItemTypes = ComputeNewItemTypes();
-      _commandBindings = new CommandBinding[] { new CommandBinding( PropertyItemCommands.ResetValue, ExecuteResetValueCommand, CanExecuteResetValueCommand ) };
+      _commandBindings = new CommandBinding[] 
+      {
+          new CommandBinding( PropertyItemCommands.ResetValue, ExecuteResetValueCommand, CanExecuteResetValueCommand ),
+          new CommandBinding( PropertyItemCommands.CopyValue, ExecuteCopyValueCommand, CanExecuteCopyValueCommand )
+      };
 
       UpdateIsExpandable();
       UpdateAdvanceOptions();

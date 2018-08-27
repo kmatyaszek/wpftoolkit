@@ -1135,7 +1135,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
           //var defaultAdvancedMenu = (ContextMenu)this.FindResource( PropertyGrid.SelectedObjectAdvancedOptionsMenuKey );
           //if( this.AdvancedOptionsMenu == defaultAdvancedMenu )
           //{
-            this.AdvancedOptionsMenu = null;
+          //  this.AdvancedOptionsMenu = null;
           //}
         }
       }

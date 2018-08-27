@@ -920,7 +920,11 @@
               Command="commands:PropertyItemCommands.ResetValue"
               CommandParameter="{Binding}"
               CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
-  </ContextMenu>
+    <MenuItem Header="Copy Value"
+              Command="commands:PropertyItemCommands.CopyValue"
+              CommandParameter="{Binding}"
+              CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+    </ContextMenu>
 
   <pg:CategoryGroupStyleSelector x:Key="categoryGroupStyleSelector"
                                  SingleDefaultCategoryItemGroupStyle="{StaticResource SingleDefaultCategoryItemGroupContainerStyle}"

@@ -28,5 +28,14 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Commands
         return _resetValueCommand;
       }
     }
-  }
+
+    private static RoutedCommand _copyValueCommand = new RoutedCommand();
+    public static RoutedCommand CopyValue
+    {
+        get
+        {
+            return _copyValueCommand;
+        }
+    }
+    }
 }
